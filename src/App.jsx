@@ -3,14 +3,27 @@ import './App.css'
 
 function App() {
 
-const [result, setResult] = useState('');
+const [result, setResult] = useState('Result');
 const [info,setInfo] = useState('');
 const [height,setHeight] = useState('');
 const [weight,setWeight] =useState('');
 
 const output = () => {
+  if(height ===''|| weight==='' ){
+     return;
+  }
+
   const bmi = Number(weight/ (height * height)*10000)
   setResult(bmi.toFixed(2));
+
+  if(bmi<18.6) {
+    setInfo("Under Weight");
+  }else if(bmi>18.6 && bmi < 24.9){
+    setInfo("Normal")
+
+  }else{
+    setInfo("over weight")
+  }
 }
 
 
